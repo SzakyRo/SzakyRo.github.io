@@ -9,13 +9,30 @@
            background-color: black;
            color: white;
            font-family: Arial, sans-serif;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           margin: 0;
+       }
+
+       #expiry-date-container,
+       #countdown-container {
+           margin-top: 20px;
+       }
+
+       a {
+           margin-top: 20px;
+           text-decoration: none;
+           color: white;
        }
    </style>
 </head>
 <body>
    <div id="expiry-date-container"></div>
    <div id="countdown-container"></div>
-   <img src="path/to/your/qr-code.png" alt="QR Code">
+   <a href="https://g.co/kgs/63qmkE2" target="_blank" rel="noopener noreferrer">Leave us a review on Google</a>
    <script>
        function displayExpiryDate() {
            var expiryDate = new Date("2025-01-27");
