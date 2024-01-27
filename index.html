@@ -6,9 +6,9 @@
    <title>Data Expirare Cafea</title>
    <style>
        body {
+           background-color: black;
            background-image: url('https://github.com/SzakyRo/SzakyRo.github.io/raw/main/Background.jpg');
-           background-size: contain;
-           background-repeat: no-repeat;
+           background-size: auto auto;
            background-position: center;
            color: white;
            font-family: Arial, sans-serif;
@@ -20,22 +20,34 @@
            margin: 0;
        }
 
+       .center-container {
+           background: rgba(0, 0, 0, 1); /* Darker background */
+           padding: 20px;
+           border-radius: 10px;
+           text-align: center;
+       }
+
        #expiry-date-container,
        #countdown-container {
            margin-top: 20px;
        }
 
+       #countdown-container {
+           margin-bottom: 20px; /* Add space between "Time Remaining" and "Leave us a review" */
+       }
+
        a {
-           margin-top: 20px;
            text-decoration: none;
            color: white;
        }
    </style>
 </head>
 <body>
-   <div id="expiry-date-container"></div>
-   <div id="countdown-container"></div>
-   <a href="https://g.co/kgs/63qmkE2" target="_blank" rel="noopener noreferrer">Leave us a review on Google</a>
+   <div class="center-container">
+      <div id="expiry-date-container"></div>
+      <div id="countdown-container"></div>
+      <a href="https://g.co/kgs/63qmkE2" target="_blank" rel="noopener noreferrer">Leave us a review on Google</a>
+   </div>
    <script>
        function displayExpiryDate() {
            var expiryDate = new Date("2025-01-27");
