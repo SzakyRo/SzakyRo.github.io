@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data expirare cafea</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Data Expirare Cafea</title>
+   <style>
+       body {
+           background-color: black;
+           color: white;
+           font-family: Arial, sans-serif;
+       }
+   </style>
 </head>
 <body>
-    <div id="expiry-date-container"></div>
+   <div id="expiry-date-container"></div>
+   <div id="countdown-container"></div>
+   <img src="path/to/your/qr-code.png" alt="QR Code">
+   <script>
+       function displayExpiryDate() {
+           var expiryDate = new Date("2025-01-27");
+           var currentDate = new Date();
 
-    <script>
-        // Function to display the expiry date
-        function displayExpiryDate() {
-            // Set the expiry date to January 27, 2025
-            var expiryDate = new Date("2025-01-27");
-            
-            // Get the current date
-            var currentDate = new Date();
+           if (currentDate < expiryDate) {
+               var formattedExpiryDate = expiryDate.toDateString();
+               document.getElementById("expiry-date-container").innerText = "Expiry Date: " + formattedExpiryDate;
 
-            // Compare the current date with the expiry date
-            if (currentDate < expiryDate) {
-                var formattedExpiryDate = expiryDate.toDateString();
-                document.getElementById("expiry-date-container").innerText = "Expiry Date: " + formattedExpiryDate;
-            } else {
-                document.getElementById("expiry-date-container").innerText = "This page has expired.";
-            }
-        }
+               // Calculate the time remaining in seconds
+               var timeRemaining = Math.floor((expiryDate - currentDate) / 1000);
 
-        // Call the function when the page loads
-        window.onload = displayExpiryDate;
-    </script>
+               // Display the countdown
+               var countdownContainer = document.getElementById("countdown-container");
+
+               function updateCountdown() {
+                   var days = Math.floor(timeRemaining / (60 * 60 * 24));
+                   var hours = Math.floor((timeRemaining % (60 * 60 * 24)) / (60 * 60));
+                   var minutes = Math.floor((timeRemaining % (60 * 60)) / 60);
+                   var seconds = timeRemaining % 60;
+
+                   countdownContainer.innerText = "Time Remaining: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+                   if (timeRemaining > 0) {
+                       timeRemaining--;
+                       setTimeout(updateCountdown, 1000);
+                   } else {
+                       countdownContainer.innerText = "Coffee expired!";
+                   }
+               }
+
+               updateCountdown();
+           } else {
+               document.getElementById("expiry-date-container").innerText = "This page has expired.";
+           }
+       }
+       window.onload = displayExpiryDate;
+   </script>
 </body>
 </html>
