@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+</head>
+<body>
+    <div id="expiry-date-container"></div>
+
+    <script>
+        // Function to display the expiry date
+        function displayExpiryDate() {
+            // Set the expiry date to January 27, 2025
+            var expiryDate = new Date("2025-01-27");
+            
+            // Get the current date
+            var currentDate = new Date();
+
+            // Compare the current date with the expiry date
+            if (currentDate < expiryDate) {
+                var formattedExpiryDate = expiryDate.toDateString();
+                document.getElementById("expiry-date-container").innerText = "Expiry Date: " + formattedExpiryDate;
+            } else {
+                document.getElementById("expiry-date-container").innerText = "This page has expired.";
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = displayExpiryDate;
+    </script>
+</body>
+</html>
